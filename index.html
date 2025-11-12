@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Otaku Shop — Anime Store</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <a class="brand" href="#">Otaku Shop</a>
+    <button class="menu-btn" aria-label="menu">☰</button>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <button id="cartBtn" class="btn" aria-haspopup="dialog">Cart (<span id="cartCount">0</span>)</button>
+      <button id="loginBtn" class="btn">Login</button>
+    </div>
+  </nav>
+
+  <!-- Hero with anime vibe bg -->
+  <header id="home" class="hero" style="
+      background-image:url('https://images.unsplash.com/photo-1600740224042-58adf8f30c31?q=80&w=1600&auto=format&fit=crop');
+      background-size:cover;background-position:center;">
+    <div class="hero-inner">
+      <h1>Top Anime Merch & Figures</h1>
+      <p>Collect figurines, posters, apparel and more. Fast shipping worldwide.</p>
+      <a href="#shop" class="btn primary">Browse Shop</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="shop" class="section">
+      <h2>Featured Items</h2>
+      <div class="grid">
+        <!-- Anime Figure -->
+        <article class="card" data-id="1" data-name="Neko Figure" data-price="49.99">
+          <img class="thumb"
+               src="https://images.unsplash.com/photo-1596464716121-f5d8753d8b52?q=80&w=1200&auto=format&fit=crop"
+               alt="High-detail Neko Anime Figure" loading="lazy">
+          <h3>Neko Figure</h3>
+          <p class="muted">High-detail collectible figure.</p>
+          <div class="card-footer">
+            <span class="price">$49.99</span>
+            <button class="btn add-btn" data-id="1" data-name="Neko Figure" data-price="49.99">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- Anime Hoodie / Apparel -->
+        <article class="card" data-id="2" data-name="Ramen Hoodie" data-price="39.50">
+          <img class="thumb"
+               src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1200&auto=format&fit=crop"
+               alt="Cozy Ramen Graphic Hoodie" loading="lazy">
+          <h3>Ramen Hoodie</h3>
+          <p class="muted">Cozy hoodie with ramen patch.</p>
+          <div class="card-footer">
+            <span class="price">$39.50</span>
+            <button class="btn add-btn" data-id="2" data-name="Ramen Hoodie" data-price="39.50">Add to cart</button>
+          </div>
+        </article>
+
+        <!-- Posters / Prints (your exact link) -->
+        <article class="card" data-id="3" data-name="Poster Pack" data-price="12.00">
+          <img class="thumb"
+               src="https://d2u1z1lopyfwlx.cloudfront.net/thumbnails/f73850d1-ce1e-5267-b4c0-5daf1e3e1e9c/99535770-0819-5379-b70e-29dead3015ae.jpg"
+               alt="Set of glossy anime-style posters" loading="lazy">
+          <h3>Poster Pack</h3>
+          <p class="muted">Set of 3 glossy posters.</p>
+          <div class="card-footer">
+            <span class="price">$12.00</span>
+            <button class="btn add-btn" data-id="3" data-name="Poster Pack" data-price="12.00">Add to cart</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Hidden section with additional options (revealed after login) -->
+    <section id="moreOptions" class="section" style="display:none;">
+      <h2>More Options</h2>
+      <div class="options-row">
+        <div>
+          <label><input type="checkbox" id="opt-figures"> Figures</label>
+          <label><input type="checkbox" id="opt-apparel"> Apparel</label>
+          <label><input type="checkbox" id="opt-posters"> Posters</label>
+        </div>
+        <div>
+          <label>Sort:
+            <select id="sortSelect">
+              <option value="popular">Popular</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <!-- Login ke baad show hone wale items ke liye anime images ready -->
+      <div id="extendedGrid" class="grid" style="margin-top:1rem;">
+        <!-- Safe static cards (IDs unique rakhe) — CSS/JS intact -->
+        <article class="card" data-id="10" data-name="Manga Starter Pack" data-price="19.99">
+          <img class="thumb"
+               src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop"
+               alt="Manga Starter Pack" loading="lazy">
+          <h3>Manga Starter Pack</h3>
+          <p class="muted">3 hand-picked shonen volumes.</p>
+          <div class="card-footer">
+            <span class="price">$19.99</span>
+            <button class="btn add-btn" data-id="10" data-name="Manga Starter Pack" data-price="19.99">Add to cart</button>
+          </div>
+        </article>
+
+        <article class="card" data-id="11" data-name="Keychain Set" data-price="8.50">
+          <img class="thumb"
+               src="https://images.unsplash.com/photo-1517837016564-bfc3ffd67455?q=80&w=1200&auto=format&fit=crop"
+               alt="Anime Keychain Set" loading="lazy">
+          <h3>Keychain Set</h3>
+          <p class="muted">Cute chibi acrylic charms (x4).</p>
+          <div class="card-footer">
+            <span class="price">$8.50</span>
+            <button class="btn add-btn" data-id="11" data-name="Keychain Set" data-price="8.50">Add to cart</button>
+          </div>
+        </article>
+
+        <article class="card" data-id="12" data-name="Katana Desk Lamp" data-price="34.00">
+          <img class="thumb"
+               src="https://images.unsplash.com/photo-1520975916090-3105956dac38?q=80&w=1200&auto=format&fit=crop"
+               alt="Katana themed desk lamp / poster vibe" loading="lazy">
+          <h3>Katana Desk Lamp</h3>
+          <p class="muted">Ambient anime desk light.</p>
+          <div class="card-footer">
+            <span class="price">$34.00</span>
+            <button class="btn add-btn" data-id="12" data-name="Katana Desk Lamp" data-price="34.00">Add to cart</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <h2>About Otaku Shop</h2>
+      <p class="muted">We curate the best anime merch from independent creators and official lines. Support fandom — responsibly.</p>
+    </section>
+  </main>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Cart drawer -->
+  <aside id="cartDrawer" class="cart-drawer" aria-hidden="true">
+    <header class="cart-head">
+      <h3>Your Cart</h3>
+      <button id="closeCart" class="btn">Close</button>
+    </header>
+    <ul id="cartList" class="cart-list"></ul>
+    <div class="cart-summary">
+      <div>Total: $<span id="cartTotal">0.00</span></div>
+      <div class="cart-actions">
+        <button id="clearCart" class="btn" aria-disabled="true">Clear</button>
+        <button id="checkout" class="btn primary" data-requires="cart-not-empty" aria-disabled="true">Checkout</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Login drawer -->
+  <aside id="loginDrawer" class="login-drawer" aria-hidden="true">
+    <header class="cart-head">
+      <h3>Login</h3>
+      <button id="closeLogin" class="btn">Close</button>
+    </header>
+    <form id="loginForm" class="form" style="margin-top:0.5rem;">
+      <div class="row">
+        <input id="loginEmail" type="email" placeholder="Email" required />
+      </div>
+      <div class="row">
+        <input id="loginPass" type="password" placeholder="Password" required />
+      </div>
+      <div class="row">
+        <button type="submit" class="btn primary">Sign in</button>
+      </div>
+    </form>
+    <div style="margin-top:0.5rem;" class="muted">Demo login: any credentials accepted.</div>
+  </aside>
+
+  <div id="overlay" class="overlay hidden"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
